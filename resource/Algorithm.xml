@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document>
+<algorithm>
+<name>FSB1</name>
+</algorithm>
+<algorithm>
+<name>FSB2</name>
+</algorithm>
+<algorithm>
+<name>DSB</name>
+</algorithm>
+<algorithm>
+    <name>TSFRI</name>
+</algorithm>
+</Document>
