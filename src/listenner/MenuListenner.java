@@ -35,6 +35,7 @@ public class MenuListenner implements ActionListener
     @Override
     public void actionPerformed(final ActionEvent e) {
         final JMenuItem temp = (JMenuItem)e.getSource();
+        String menuTitle = ((JMenu)((JPopupMenu)temp.getParent()).getInvoker()).getText();
         if (temp.getText().equals("Simulation Open")) {
             this.card.show(this.parent, "Simulation");
             current = (JPanel) this.parent.getComponent(0);
@@ -44,8 +45,7 @@ public class MenuListenner implements ActionListener
             current = (JPanel) this.parent.getComponent(1);
         }
         else if (temp.getText().equals("Run")) {
-            if (current instanceof SimulationJPanel){
-
+            if (current instanceof SimulationJPanel && menuTitle.contains("Simulation")) {
                 final DoubleList list = SimulationJPanel.EAST;
                 final String obj = (String)list.getSelect();
                 final String information = this.ShowInformation(obj, this.parent);
@@ -74,7 +74,7 @@ public class MenuListenner implements ActionListener
                     }
                 }
             }
-            else if (current instanceof RealJPanel) {
+            else if (current instanceof RealJPanel && menuTitle.contains("Real")) {
                 RealJPanel realJPanel = (RealJPanel) current;
                 String obj = (String) realJPanel.alg.getSelectedItem();
                 String information = this.ShowInformation(obj, this.parent);

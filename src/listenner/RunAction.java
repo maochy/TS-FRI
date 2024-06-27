@@ -49,7 +49,6 @@ public class RunAction implements ActionListener
             new FSCSThread(dimList, this.failRate, this.compactness, this.orientation, this.failShape, sPanel.firstCausingTest).execute();
         }
         else if (panel instanceof RealJPanel) {
-            //TODO coding
             RealJPanel rPanel = (RealJPanel) panel;
             List<ComparableTestCase> list = null;
             String progName = (String) rPanel.shapeType.getSelectedItem();

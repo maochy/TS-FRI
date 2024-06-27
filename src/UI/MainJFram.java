@@ -9,6 +9,7 @@ import java.io.File;
 
 public class MainJFram extends JFrame
 {
+    private final JMenuItem realRun;
     public RealJPanel realJpane;
     JToolBar toolbar;
     public JPanel Central;
@@ -29,9 +30,9 @@ public class MainJFram extends JFrame
             saveFile.mkdirs();
         }
         final JMenuBar mainBar = new JMenuBar();
-        final JMenu Simulation = new JMenu("Simulation(S)");
-        Simulation.setFont(Source.mainFont);
-        Simulation.setHorizontalAlignment(0);
+        final JMenu simulation = new JMenu("Simulation(S)");
+        simulation.setFont(Source.mainFont);
+        simulation.setHorizontalAlignment(0);
         (this.simulationShow = new JMenuItem("Simulation Open")).setFont(Source.mainFont);
         this.simulationShow.setPreferredSize(new Dimension(200, this.simulationShow.getPreferredSize().height));
         (this.simulationRun = new JMenuItem("Run")).setFont(Source.mainFont);
@@ -40,18 +41,21 @@ public class MainJFram extends JFrame
         this.simulationRestart.setPreferredSize(new Dimension(200, this.simulationRestart.getPreferredSize().height));
         (this.show = new JMenuItem("Show")).setFont(Source.mainFont);
         this.show.setPreferredSize(new Dimension(200, this.show.getPreferredSize().height));
-        Simulation.add(this.simulationShow);
-        Simulation.add(this.simulationRun);
-        Simulation.add(this.simulationRestart);
-        Simulation.add(this.show);
-        final JMenu Real = new JMenu("Real Program(R)");
-        Real.setFont(Source.mainFont);
-        Real.setHorizontalAlignment(0);
+        simulation.add(this.simulationShow);
+        simulation.add(this.simulationRun);
+        simulation.add(this.simulationRestart);
+        simulation.add(this.show);
+        final JMenu real = new JMenu("Real Program(R)");
+        real.setFont(Source.mainFont);
+        real.setHorizontalAlignment(0);
         (this.realShow = new JMenuItem("Real Open")).setFont(Source.mainFont);
         this.realShow.setPreferredSize(new Dimension(200, this.realShow.getPreferredSize().height));
-        Real.add(this.realShow);
-        mainBar.add(Simulation);
-        mainBar.add(Real);
+        (this.realRun = new JMenuItem("Run")).setFont(Source.mainFont);
+        this.realRun.setPreferredSize(new Dimension(200, this.realRun.getPreferredSize().height));
+        real.add(this.realShow);
+        real.add(this.realRun);
+        mainBar.add(simulation);
+        mainBar.add(real);
         (this.Central = new JPanel()).setLayout(new CardLayout());
         this.showFigure.setLayout(new BorderLayout());
         this.showFigure.setPreferredSize(new Dimension(400, 400));
@@ -65,6 +69,7 @@ public class MainJFram extends JFrame
         this.simulationRun.addActionListener(new MenuListenner(this));
         this.simulationRestart.addActionListener(new MenuListenner(this));
         this.show.addActionListener(new MenuListenner(this));
+        this.realRun.addActionListener(new MenuListenner(this));
         this.setJMenuBar(mainBar);
         this.getContentPane().add(this.Central, "Center");
         final Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
